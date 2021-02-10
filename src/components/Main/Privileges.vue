@@ -53,19 +53,62 @@ export default {
   padding-bottom: 40px;
 
   &__header {
+    @include transition(color);
     margin: 0 0 20px;
     color: var(--text-color);
     text-align: center;
+
+    @media ($laptop) {
+      font-weight: bold;
+      font-size: 38px;
+      line-height: 44px;
+    }
   }
 
   &__list {
     margin: 0;
     padding: 0;
     list-style: none;
+
+    @media ($tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
-  &__element:not(:last-child) {
+  &__element {
     margin-bottom: 20px;
+
+    @media ($tablet) {
+      width: calc(50% - 5px);
+      &:nth-child(2n) {
+        margin-left: 5px;
+      }
+      &:nth-child(2n + 1) {
+        margin-right: 5px;
+      }
+      &:nth-last-child(-n+2) {
+        margin-bottom: 0;
+      }
+    }
+
+    @media ($desktop) {
+      width: calc(33% - 5px);
+      &:nth-child(2n) {
+        margin-left: 0;
+      }
+      &:nth-child(2n + 1) {
+        margin-right: 0;
+      }
+      &:nth-last-child(-n+3) {
+        margin-bottom: 0;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__privilege {

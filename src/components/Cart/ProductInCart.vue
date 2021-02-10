@@ -113,6 +113,13 @@ export default {
   border-radius: 10px;
   background-color: var(--second-back-color);
 
+  @media ($desktop) {
+    grid-template-areas: 'button img title price' 'button img controls price';
+    grid-template-columns: 20px 100px 1fr minmax(60px, 100px);
+    padding: 0 25px 0 15px;
+    column-gap: 15px;
+  }
+
   &__remove-button {
     @include hover();
     position: relative;
@@ -123,6 +130,10 @@ export default {
     padding: 0;
     border: none;
     background-color: transparent;
+
+    @media ($desktop) {
+      align-self: center;
+    }
 
     &::before, &::after {
       @include transition(background-color);
@@ -150,6 +161,10 @@ export default {
     justify-self: center;
     width: 100px;
     height: 100px;
+
+    @media ($desktop) {
+      align-self: center;
+    }
   }
 
   &__img {
@@ -167,10 +182,21 @@ export default {
     font-size: 18px;
     line-height: 21px;
     text-align: center;
+
+    @media ($desktop) {
+      overflow: hidden;
+      max-width: 100%;
+      padding-top: 15px;
+      text-overflow: ellipsis;
+    }
   }
 
   &__controls {
     grid-area: controls;
+
+    @media ($desktop) {
+      padding-bottom: 10px;
+    }
   }
 
   &__price {

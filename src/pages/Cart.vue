@@ -1,6 +1,6 @@
 <template>
   <section class="cart">
-    <div class="container">
+    <div class="container cart__container">
       <div class="cart__back-wrapper">
         <Back
           class="cart__back"
@@ -56,8 +56,19 @@ export default {
   @include back-retina('cart');
   min-height: 100vh;
 
+  @media ($laptop) {
+    padding-top: 25px;
+  }
+
   &__back-wrapper {
     padding: 15px 0;
+
+    @media ($laptop) {
+      @include transition(background-color);
+      margin-bottom: 25px;
+      border-radius: 10px;
+      background-color: var(--second-back-color);
+    }
   }
 
   &__products-list {
@@ -70,8 +81,19 @@ export default {
     }
   }
 
-  &__make-order  {
-    width: 100%;
+  &__make-order-form  {
+    @media ($laptop) {
+      grid-area: form;
+    }
+  }
+
+  &__container {
+    @media ($laptop) {
+      display: grid;
+      grid-template-areas: 'back form' 'list form' 'list .';
+      grid-template-columns: 1fr 465px;
+      column-gap: 20px;
+    }
   }
 }
 </style>

@@ -13,7 +13,10 @@
     <h2 class="intro__title">
       <slot name="title" />
     </h2>
-    <PrivilegeControls v-model:current-type="innerCurrentType" />
+    <PrivilegeControls
+      v-model:current-type="innerCurrentType"
+      class="intro__controls"
+    />
     <p class="intro__description">
       <slot name="description" />
     </p>
@@ -75,12 +78,50 @@ export default {
   max-width: 314px;
   padding: 0 10px;
 
+  @media ($tablet) {
+    display: grid;
+    grid-template-areas: 'img controls' 'img description' 'title description';
+    grid-template-columns: 314px 1fr;
+    grid-row-gap: 10px;
+    max-width: none;
+  }
+
+  @media ($laptop) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+  }
+
+  @media ($desktop) {
+    display: grid;
+    flex-grow: 1;
+    grid-template-areas: 'img title' 'img description' 'img controls';
+    width: auto;
+    max-width: calc(100% - 420px);
+  }
+
   &__title {
     margin: 0 0 10px 0;
     color: var(--text-color);
     font-weight: 800;
     font-size: 30px;
     line-height: 39px;
+
+    @media ($tablet) {
+      grid-area: title;
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    @media ($desktop) {
+      grid-area: title;
+      margin-bottom: 25px;
+      font-weight: bold;
+      font-size: 42px;
+      line-height: 48px;
+      text-align: left;
+    }
   }
 
   &__description {
@@ -88,44 +129,32 @@ export default {
     color: var(--text-color);
     font-size: 16px;
     line-height: 21px;
+
+    @media ($tablet) {
+      grid-area: description;
+      align-self: start;
+      margin-top: 25px;
+      margin-bottom: 0;
+    }
+
+    @media ($desktop) {
+      grid-area: description;
+      margin: 0 0 70px 0;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 28px;
+    }
   }
 
   &__controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-
-  &__control {
-    $self: &;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid var(--text-color);
-    border-radius: 10px;
-    background-color: transparent;
-    transition: border-color $transition;
-
-    &-text {
-      transition: color $transition;
+    @media ($tablet) {
+      grid-area: controls;
+      margin-top: 25px;
     }
 
-    &--active {
-      border-color: $blue;
-
-      #{$self} {
-        &-text {
-          color: $blue;
-        }
-      }
-    }
-
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
-
-    &:hover {
-      cursor: pointer;
+    @media ($desktop) {
+      grid-area: controls;
+      margin: 0;
     }
   }
 
@@ -138,6 +167,17 @@ export default {
     width: 204px;
     height: 264px;
     margin-bottom: 10px;
+
+    @media ($tablet) {
+      grid-area: img;
+      justify-self: center;
+      margin-bottom: 0;
+    }
+
+    @media ($desktop) {
+      grid-area: img;
+      margin-right: 30px;
+    }
   }
 
   &__img {

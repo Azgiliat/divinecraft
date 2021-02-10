@@ -124,12 +124,61 @@ export default {
   padding-top: 20px;
   background-color: transparent;
 
-  &__back {
-    margin: 0 auto;
+  &__content {
+    @media ($laptop) {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 
-  &__intro, &__price, &__description {
+  &__back {
+    margin: 0 auto;
+
+    @media ($laptop) {
+      display: none;
+    }
+  }
+
+  &__intro {
+    margin: 0 auto 30px 0;
+
+    @media ($laptop) {
+      margin: 0 0 50px 0;
+    }
+  }
+
+  &__price {
     margin-bottom: 30px;
+
+    @media ($laptop) {
+      margin-bottom: 0;
+      margin-left: auto;
+    }
+  }
+
+  &__description {
+    margin-bottom: 30px;
+
+    @media ($laptop) {
+      width: 50%;
+    }
+
+    @media ($desktop) {
+      flex-grow: 1;
+      width: auto;
+      min-width: 780px;
+      max-width: calc(100% - 420px);
+    }
+  }
+
+  &__other-privileges {
+    @media ($laptop) {
+      margin-left: auto;
+    }
+
+    @media ($desktop) {
+      width: 400px;
+    }
   }
 }
 </style>

@@ -46,6 +46,15 @@ export default {
   border-radius: 8px;
   background-color: var(--second-back-color);
 
+  @media ($laptop) {
+    align-self: center;
+    width: 40%;
+  }
+
+  @media ($desktop) {
+    width: 400px;
+  }
+
   &__title {
     display: flex;
     align-items: baseline;

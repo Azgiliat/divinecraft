@@ -46,17 +46,32 @@ export default {
 
 <style lang="scss" scoped>
 .other-privileges {
+  @media ($laptop) {
+    width: 50%;
+  }
+
   &__title {
     margin: 0 0 20px 0;
     font-weight: normal;
+    font-weight: bold;
     font-size: 24px;
     line-height: 29px;
+
+    @media ($tablet) {
+      text-align: center;
+    }
   }
 
   &__list {
     margin: 0;
     padding: 0;
     list-style: none;
+
+    @media ($tablet) {
+      max-width: 400px;
+      margin-right: auto;
+      margin-left: auto;
+    }
   }
 
   &__item {

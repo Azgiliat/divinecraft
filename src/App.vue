@@ -3,9 +3,9 @@
     class="app"
     :class="{[`app--${theme}-theme`]: true}"
   >
-    <Header />
+    <Header class="app__header" />
     <router-view class="app__body" />
-    <Footer />
+    <Footer class="app__footer" />
   </div>
 </template>
 
@@ -40,6 +40,12 @@ export default {
   position: relative;
   width: 100%;
   max-width: 100%;
+  min-height: 100vh;
+
+  @media ($laptop) {
+    display: flex;
+    flex-direction: column;
+  }
 
   &--dark-theme {
     @import "assets/css/dark-theme.scss";
@@ -49,6 +55,12 @@ export default {
   &--light-theme {
     @import "assets/css/light-theme.scss";
     @include theme($back-color, $text-color, $header-color, $header-accent-color, $blue);
+  }
+
+  &__footer {
+    @media ($laptop) {
+      margin-top: auto;
+    }
   }
 }
 </style>

@@ -55,9 +55,15 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     grid-gap: 2px;
+    max-width: 1000px;
     margin: 0;
     padding: 0;
     list-style: none;
+
+    @media($laptop) {
+      margin-right: auto;
+      margin-left: auto;
+    }
   }
 
   &__item {

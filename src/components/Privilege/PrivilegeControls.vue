@@ -1,14 +1,14 @@
 <template>
-  <div class="intro__controls">
+  <div class="privilege__controls">
     <button
       v-for="type in privilegeTypes"
       :key="type"
       type="button"
-      class="intro__control"
-      :class="currentType === type.value && 'intro__control--active'"
+      class="privilege__control"
+      :class="currentType === type.value && 'privilege__control--active'"
       @click="$emit('update:current-type', type.value)"
     >
-      <span class="intro__control-text">
+      <span class="privilege__control-text">
         {{ type.title }}
       </span>
     </button>
@@ -48,12 +48,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.intro {
+.privilege {
   &__controls {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+
+    @media ($tablet) {
+      justify-content: space-between;
+    }
+
+    @media ($desktop) {
+      justify-content: start;
+    }
   }
 
   &__control {
@@ -64,6 +72,10 @@ export default {
     border-radius: 10px;
     background-color: transparent;
     transition: border-color $transition;
+
+    @media ($tablet) {
+      margin-bottom: 0;
+    }
 
     &-text {
       @include transition(color);
@@ -82,6 +94,14 @@ export default {
 
     &:not(:last-child) {
       margin-right: 10px;
+
+      @media($tablet) {
+        margin-right: 0;
+      }
+
+      @media ($desktop) {
+        margin-right: 10px;
+      }
     }
 
     &:hover {

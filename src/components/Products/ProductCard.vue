@@ -69,6 +69,10 @@ export default {
   border-radius: 8px;
   background-color: var(--back-color);
 
+  @media($tablet) {
+    height: 100%;
+  }
+
   &__title {
     margin-bottom: 10px;
     color: var(--text-color);

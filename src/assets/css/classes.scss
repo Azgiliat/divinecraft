@@ -32,6 +32,10 @@ body {
       }
     }
   }
+
+  @media ($laptop) {
+    max-width: 1200px;
+  }
 }
 
 @each $privilege, $color in $privileges {

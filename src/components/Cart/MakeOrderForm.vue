@@ -181,6 +181,11 @@ export default {
   border-radius: 10px;
   background-color: var(--second-back-color);
 
+  @media ($laptop) {
+    align-self: start;
+    max-height: 450px;
+  }
+
   &__nickname {
     grid-area: nick;
   }

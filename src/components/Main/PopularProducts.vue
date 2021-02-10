@@ -56,17 +56,46 @@ export default {
   &__title {
     margin: 0 0 25px 0;
     color: $white;
+    font-family: $second-font;
     text-align: center;
+
+    @media ($laptop) {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 37px;
+    }
   }
 
   &__list {
     margin: 0;
     padding: 0;
     list-style: none;
+
+    @media ($tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
   }
 
-  &__product:not(:last-child) {
+  &__product {
     margin-bottom: 20px;
+
+    @media ($tablet) {
+      width: calc(33% - 5px);
+    }
+
+    @media ($desktop) {
+      width: calc(20% - 5px);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+
+      @media ($tablet) {
+        margin-bottom: 20px;
+      }
+    }
   }
 
   &__product-card {

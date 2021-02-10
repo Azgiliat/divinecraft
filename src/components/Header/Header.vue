@@ -4,7 +4,7 @@
     :class="[isMenuShow ? 'header--opened' : 'header--closed', `header--${color}`]"
   >
     <BurgerMenu
-      v-show="$mq === 'mobile'"
+      v-show="isBurgerShow"
       :color="color"
       :is-open="isMenuShow"
       class="header__burger-menu"
@@ -58,6 +58,11 @@ export default {
       isMenuShow,
       toggleMenu
       // themeSwitcher
+    }
+  },
+  computed: {
+    isBurgerShow () {
+      return this.$mq === 'mobile' || this.$mq === 'tablet'
     }
   }
 }

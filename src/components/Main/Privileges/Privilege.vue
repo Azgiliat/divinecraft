@@ -52,7 +52,6 @@ export default {
 
 <style lang="scss" scoped>
 .privilege {
-
   display: flex;
   justify-content: space-between;
   max-width: 314px;
@@ -68,6 +67,15 @@ export default {
     filter: drop-shadow(0px 4px 40px rgba(0, 193, 73, 0.4));
   }
 
+  @media ($tablet) {
+    height: 100%;
+  }
+
+  @media ($laptop) {
+    max-width: 400px;
+    padding: 20px;
+  }
+
   &__header, &__description {
     margin: 0;
     color: $white;
@@ -76,6 +84,11 @@ export default {
   &__info {
     flex-grow: 1;
     padding: 10px;
+
+    @media ($tablet) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__header {
@@ -84,6 +97,12 @@ export default {
     font-size: 20px;
     line-height: 28px;
     text-align: center;
+
+    @media ($laptop) {
+      font-weight: bold;
+      font-size: 28px;
+      line-height: 32px;
+    }
   }
 
   &__description {
@@ -92,6 +111,12 @@ export default {
     font-size: 18px;
     font-family: $second-font;
     line-height: 21px;
+
+    @media ($laptop) {
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 18px;
+    }
   }
 
   &__img-wrapper {
@@ -115,6 +140,10 @@ export default {
     color: $white;
     outline: none;
     text-align: center;
+
+    @media ($tablet) {
+      margin-top: auto;
+    }
 
     &:hover {
       cursor: pointer;
