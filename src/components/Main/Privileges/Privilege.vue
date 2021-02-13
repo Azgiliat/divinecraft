@@ -12,7 +12,6 @@
       </p>
       <router-link
         :to="`/privilege/${privilegeName}`"
-        type="button"
         class="privilege__price"
       >
         от {{ price }} ₽

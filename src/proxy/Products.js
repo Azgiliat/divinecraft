@@ -73,6 +73,7 @@ export default class ProductsProxy extends Proxy {
 
     return this.submit({
       endpoint: 'price',
+      method: 'post',
       data: {
         coupon,
         products

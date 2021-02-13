@@ -14,7 +14,6 @@
       v-model:value="promoCode"
       class="make-order-form__promo-code"
       placeholder="Промокод"
-      :disabled="true"
     />
     <AppCheckbox
       v-model:checked="isInsuranceChecked"
@@ -157,12 +156,12 @@ export default {
     }),
     ...mapActions('cart/buyModule', {
       checkCoupon: 'checkCoupon',
-      tryToBuy: 'tryToBuy'
+      buyProducts: 'buyProducts'
     }),
     submit (evt) {
       evt.preventDefault()
       if (this.readyToSubmit) {
-        this.tryToBuy()
+        this.buyProducts()
       }
     }
   }

@@ -7,10 +7,17 @@
     <div class="switcher__line" />
     <div class="switcher__circle" />
     <div
-      v-if="$slots.icon"
-      class="switcher__icon"
+      class="switcher__icon-wrapper"
     >
-      <slot name="icon" />
+      <slot name="icon">
+        <svg
+          width="24"
+          height="24"
+          class="switcher__icon"
+        >
+          <use xlink:href="#theme-switcher" />
+        </svg>
+      </slot>
     </div>
   </div>
 </template>
@@ -51,12 +58,24 @@ export default {
   $self: &;
   @include hover();
   position: relative;
+  display: flex;
+  align-items: center;
   width: 50px;
   padding: 2px;
+
+  &__icon-wrapper {
+    margin-left: 10px;
+  }
+
+  &__icon {
+    @include transition(fill);
+    fill: var(--accent-color);
+  }
 
   &__line {
     @include transition(background-color);
     width: 100%;
+    min-width: 46px;
     height: 10px;
     border-radius: 10px;
     background-color: var(--text-color);
@@ -65,7 +84,7 @@ export default {
   &__circle {
     @include transition(background-color, transform);
     position: absolute;
-    top: 0;
+    top: calc(50% - 7px);
     left: 0;
     width: 14px;
     height: 14px;

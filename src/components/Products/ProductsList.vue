@@ -52,5 +52,13 @@ export default {
   margin: 0;
   padding: 0;
   list-style: none;
+
+  @media ($laptop) {
+    grid-template-columns: repeat(3, calc(33% - 3px));
+  }
+
+  @media ($desktop) {
+    grid-template-columns: repeat(5, calc(20% - 2px));
+  }
 }
 </style>

@@ -1,4 +1,5 @@
 import { DARK_THEME } from '@/constants/themeNames'
+import { TEXT, ACCENT } from '@/constants/headerColors'
 
 export default function () {
   return {
@@ -6,10 +7,10 @@ export default function () {
     devErrorText: '',
     activeSection: '',
     headerColors: {
-      banner: 'accent',
-      privileges: 'text',
-      products: 'accent',
-      categories: 'text'
+      banner: ACCENT,
+      privileges: TEXT,
+      products: ACCENT,
+      categories: TEXT
     },
     activeTheme: DARK_THEME
   }

@@ -140,7 +140,7 @@ export default {
   }
 
   &__intro {
-    margin: 0 auto 30px 0;
+    margin: 0 auto 30px auto;
 
     @media ($laptop) {
       margin: 0 0 50px 0;

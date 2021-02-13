@@ -1,13 +1,14 @@
 <template>
   <nav
     class="nav"
-    :class="`nav--${color}`"
+    :class="`nav--${realColor}`"
   >
     <a
       href="#"
       class="nav__play-link"
+      @click="copyPlayLink"
     >
-      play.divinecraft.ru
+      {{ PLAY_LINK }}
     </a>
     <router-link
       class="nav__main nav__link"
@@ -44,13 +45,25 @@
 </template>
 
 <script>
+import { ACCENT } from '@/constants/headerColors'
+import { PLAY_LINK } from '@/constants/links'
+import headerElementsColorMixin from '@/mixins/headerElementsColorMixin'
+import copyPlayLink from '@/composition/Header/copyPlayLink'
+
 export default {
   name: 'HeaderNav',
+  mixins: [headerElementsColorMixin],
   props: {
     color: {
       type: String,
       require: true,
-      default: 'accent'
+      default: ACCENT
+    }
+  },
+  setup () {
+    return {
+      copyPlayLink,
+      PLAY_LINK
     }
   }
 }
@@ -58,6 +71,12 @@ export default {
 
 <style lang="scss" scoped>
 .nav {
+  @media ($laptop) {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+
   &__link {
     display: block;
     margin-bottom: 10px;
@@ -67,6 +86,10 @@ export default {
     line-height: 21px;
     text-decoration: none;
     transition: color $transition;
+
+    @media ($laptop) {
+      margin-bottom: 0;
+    }
   }
 
   &__link:last-child {
@@ -79,12 +102,17 @@ export default {
     color: $blue;
     font-size: 14px;
     line-height: 21px;
+
+    @media ($laptop) {
+      margin-right: 15%;
+      margin-bottom: 0;
+    }
   }
 
   &--accent {
     .nav {
       &__link {
-        color: $accent;
+        color: var(--accent-color);
       }
     }
   }

@@ -91,7 +91,9 @@ export default {
     @media ($laptop) {
       display: grid;
       grid-template-areas: 'back form' 'list form' 'list .';
+      grid-template-rows: 100px repeat(2, auto);
       grid-template-columns: 1fr 465px;
+      grid-auto-rows: auto;
       column-gap: 20px;
     }
   }

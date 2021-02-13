@@ -1,3 +1,10 @@
+import themesWithColorSwitch from '@/constants/themesWithColorSwitch'
+import { TEXT } from '@/constants/headerColors'
+
 export function currentColorForHeader (state) {
-  return state.headerColors[state.activeSection]
+  if (themesWithColorSwitch.has(state.activeTheme)) {
+    return state.headerColors[state.activeSection]
+  } else {
+    return TEXT
+  }
 }

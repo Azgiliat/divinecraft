@@ -1,6 +1,5 @@
 <template>
   <router-link
-    type="button"
     class="category-card"
     :class="`category-card--${category}`"
     :to="`/products/${category}`"

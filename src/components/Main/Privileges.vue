@@ -75,6 +75,13 @@ export default {
       flex-wrap: wrap;
       justify-content: center;
     }
+
+    @media ($laptop) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 30px;
+      column-gap: 30px;
+    }
   }
 
   &__element {
@@ -93,15 +100,16 @@ export default {
       }
     }
 
-    @media ($desktop) {
-      width: calc(33% - 5px);
+    @media ($laptop) {
+      width: 100%;
+      margin: 0;
       &:nth-child(2n) {
         margin-left: 0;
       }
       &:nth-child(2n + 1) {
         margin-right: 0;
       }
-      &:nth-last-child(-n+3) {
+      &:nth-last-child(-n+2) {
         margin-bottom: 0;
       }
     }

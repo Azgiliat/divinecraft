@@ -10,7 +10,7 @@
       class="header__burger-menu"
       @click="toggleMenu"
     />
-    <div class="header__navigation">
+    <div class="header__navigation container container--no-mobile container--no-tablet">
       <HeaderNav
         class="header__nav"
         :color="color"
@@ -19,10 +19,10 @@
         class="header__basket"
         :color="color"
       />
-      <!--      <Switcher-->
-      <!--        v-model:is-checked="themeSwitcher"-->
-      <!--        class="header__switcher"-->
-      <!--      />-->
+      <Switcher
+        v-model:is-checked="themeSwitcher"
+        class="header__switcher"
+      />
     </div>
   </header>
 </template>
@@ -32,32 +32,32 @@ import { useStore } from 'vuex'
 
 import menuLogic from '../../composition/Header/Menu'
 import menuColor from '@/composition/Header/Colors'
-// import themeSwitcherLogic from '@/composition/Header/themeSwitcherLogic'
+import themeSwitcherLogic from '@/composition/Header/themeSwitcherLogic'
 
 import BurgerMenu from '@/components/Header/BurgerMenu'
 import HeaderCart from '@/components/Header/HeaderCart'
 import HeaderNav from '@/components/Header/HeaderNav'
-// import Switcher from '@/components/UI/Switcher'
+import Switcher from '@/components/UI/Switcher'
 
 export default {
   name: 'Header',
   components: {
     BurgerMenu,
     HeaderNav,
-    HeaderCart
-    // Switcher
+    HeaderCart,
+    Switcher
   },
   setup () {
     const store = useStore()
     const { isMenuShow, toggleMenu } = menuLogic()
     const { color } = menuColor(store)
-    // const { themeSwitcher } = themeSwitcherLogic(store)
+    const { themeSwitcher } = themeSwitcherLogic(store)
 
     return {
       color,
       isMenuShow,
-      toggleMenu
-      // themeSwitcher
+      toggleMenu,
+      themeSwitcher
     }
   },
   computed: {
@@ -79,6 +79,15 @@ export default {
   background-color: transparent;
   transition: transform $transition, background-color $transition;
 
+  @media ($laptop) {
+    position: static;
+    width: 100%;
+    padding: 0;
+    background-color: var(--second-back-color);
+    box-shadow: 0px 1px 20px -5px rgba(0, 0, 0, 0.35);
+    transform: translateX(0);
+  }
+
   &__burger-menu {
     position: absolute;
     top: 15px;
@@ -87,6 +96,16 @@ export default {
 
   &__nav, &__basket {
     margin-bottom: 20px;
+
+    @media ($laptop) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__basket {
+    @media ($laptop) {
+      margin-left: 15%;
+    }
   }
 
   &__navigation {
@@ -94,6 +113,11 @@ export default {
     padding-top: 5px;
     padding-left: 15px;
     transition: opacity $transition;
+
+    @media ($laptop) {
+      display: flex;
+      padding: 25px 0;
+    }
 
     &::before {
       content: '';
@@ -106,6 +130,10 @@ export default {
       height: calc(100% + 80px);
       background: var(--header-accent-gradient);
       transition: opacity $transition, background $transition;
+
+      @media ($laptop) {
+        display: none;
+      }
     }
 
     &::after {
@@ -119,11 +147,19 @@ export default {
       height: calc(100% + 80px);
       background: var(--header-gradient);
       transition: opacity $transition, background $transition;
+
+      @media ($laptop) {
+        display: none;
+      }
     }
   }
 
   &--closed {
     transform: translateX(calc(200% - 30px));
+
+    @media ($laptop) {
+      transform: translateX(0);
+    }
 
     .header__navigation::before, .header__navigation::after {
       opacity: 0;
@@ -132,6 +168,10 @@ export default {
 
   &--opened {
     transform: translateX(100%);
+
+    @media ($laptop) {
+      transform: translateX(0);
+    }
   }
 
   &--opened#{&}--accent {

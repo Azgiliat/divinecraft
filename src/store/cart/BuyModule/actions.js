@@ -1,4 +1,5 @@
 export function checkAvailability (ctx, payload) {
+  //  сказали, что всегда все доступно, тут не ндао дергать этот метод
   return this.$productsApi.checkAvailability(payload)
     .then(res => {
       return res.available
@@ -51,7 +52,7 @@ export function checkCoupon ({ state, commit, getters }) {
       commit('setCoupon', res.price)
     })
     .catch(err => {
-      commit('setPriceAfterCouponCHeck', null)
+      commit('setPriceAfterCouponCheck', null)
       throw new Error(err)
     })
     .finally(() => {

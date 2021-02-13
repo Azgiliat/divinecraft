@@ -49,6 +49,7 @@ export default {
   @media ($laptop) {
     align-self: center;
     width: 40%;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.2);
   }
 
   @media ($desktop) {

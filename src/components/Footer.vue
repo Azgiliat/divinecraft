@@ -59,6 +59,10 @@ export default {
   padding: 15px;
   background-color: $footer-color;
 
+  @media ($laptop) {
+    padding: 20px;
+  }
+
   &__text {
     margin: 0 0 10px 0;
     color: $white;
@@ -67,10 +71,29 @@ export default {
     text-align: center;
   }
 
+  &__info {
+    @media ($laptop) {
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+    }
+  }
+
+  &__ogrn {
+    @media ($laptop) {
+      margin-left: 50px;
+    }
+  }
+
   &__links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
+    @media ($laptop) {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__link {
@@ -82,10 +105,26 @@ export default {
     width: 100%;
     margin-bottom: 15px;
     color: $accent;
+
+    @media ($laptop) {
+      width: auto;
+      margin-right: 50px;
+    }
   }
 
   &__vk-link {
     margin-right: 10px;
+
+    @media ($laptop) {
+      margin-right: 20px;
+    }
+  }
+
+  &__container {
+    @media ($laptop) {
+      display: flex;
+      align-items: center;
+    }
   }
 }
 </style>
